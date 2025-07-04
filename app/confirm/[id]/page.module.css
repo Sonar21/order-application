@@ -1,0 +1,148 @@
+.container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #fff0f5;
+  border: 2px solid #f8c3d0;
+  box-shadow: 0 6px 12px rgba(255, 182, 193, 0.3);
+  font-family: var(--font-sans);
+  text-align: center;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: #d63384;
+}
+
+.title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #d63384;
+  margin-bottom: 1.5rem;
+}
+
+.image {
+  border-radius: 1rem;
+  object-fit: cover;
+  max-width: 200px;
+  height: auto;
+  border: 3px solid #ffc0cb;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #d63384;
+  margin-top: 1rem;
+}
+
+.price {
+  color: #e11d48;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.comment {
+  font-size: 0.9rem;
+  color: #7f1d1d;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.button {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  background-color: #f472b6;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #ec4899;
+}
+
+.qty {
+  display: inline-block;
+  width: 3rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancel {
+  flex: 1;
+  padding: 0.75rem;
+  background: #e0e7ff;
+  color: #374151;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.cancel:hover {
+  background: #c7d2fe;
+}
+
+.confirm {
+  flex: 1;
+  padding: 0.75rem;
+  background: #ec4899;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.confirm:hover {
+  background: #db2777;
+}
+.backIcon {
+  /* position: absolute;
+  top:2rem;
+  left: 20rem; */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #d63384;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.backIcon:hover {
+  opacity: 0.7;
+}
