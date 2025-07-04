@@ -8,7 +8,7 @@ import Image from "next/image";
 import StarRating from '@/app/components/StarRating';
 import { useRouter } from 'next/navigation';
 import styles from "./page.module.css";
-
+import { FaSearch } from "react-icons/fa";
 const MENU_API_URL = "https://5o7lwwt7q4.microcms.io/api/v1/menus"; // microCMS のエンドポイント URL
 
 // データをセットする配列を用意
@@ -30,6 +30,17 @@ export default function MenuPage() {
 // setMenu,setCart は、menu,cart を更新する関数function
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const [cart, setCart] = useState<MenuItem[]>([]);
+const [searchTerm, setSearchTerm] = useState("");
+const [searchQuery, setSearchQuery] = useState("");  // 検索確定キーワード
+
+const handleSearch = () => {
+  setSearchQuery(searchTerm);
+};
+
+const filteredMenu = menu.filter((item) =>
+  item.name.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
   const router = useRouter(); //画面移動で使用
 
   // useEffect(() => { fetch(...); }, []); 画面の準備が終わったタイミングでmicroCMSからデータを取得する
@@ -60,7 +71,7 @@ export default function MenuPage() {
       setCart(JSON.parse(saved));
     }
   }, []);
-
+    
   // カートに追加する
   const addToCart = (item: MenuItem) => {
     const updated = [...cart, item];
@@ -75,57 +86,43 @@ export default function MenuPage() {
   localStorage.setItem("cart", JSON.stringify(updated));
 };
 
-// const getTotalPrice = () => {
-//   return cart.reduce((sum, item) => sum + item.price, 0);
-// };
+
 const getTotalPrice = () => {
   return cart.reduce((total, item) => total + item.price, 0);
 };
 
+
   return (
     <div className={styles.container}>
       {/* メニュー一覧 */}
-      {/* <main className={styles.menuList}>
-        <h1 className={styles.title}>メニュー一覧</h1>
-        <ul className={styles.list}>
-          {menu.map((item) => (
-            <li key={item.id} className={styles.item}>
-              {item.image && (
-                <Image
-                  src={item.image.url}
-                  alt={item.name}
-                  width={item.image.width}
-                  height={item.image.height}
-                  className={styles.menuImage}
-                   style={{ height: "auto" }} 
-                />
-                
-
-              )}
-              <p className={styles.name}>
-                {item.name} — {item.price}円
-              </p>
-              <button
-                className={styles.addButton}
-                // onClick={() => addToCart(item)}
-                onClick={() => router.push(`/confirm/${item.id}`)}
-              >
-                追加
-              </button>
-              {item.comment && <p className={styles.comment}>{item.comment}</p>}
-              <hr className={styles.separator} />
-            </li>
-          ))}
-        </ul>
-        <Link href="/cart" className={styles.checkoutLink}>
-          注文確認へ進む
-        </Link>
-      </main> */}
-
 <main className={styles.menuList}>
   <h1 className={styles.title}>メニュー一覧</h1>
+
+<div className={styles.searchContainer}>
+  <input
+    type="text"
+    className={styles.searchBox}
+    placeholder="メニューを検索"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      handleSearch(); // ボタンと同じ関数を呼び出す
+    }
+  }}
+  />
+  <button
+    className={styles.searchButton}
+    onClick={() => handleSearch()}
+  >
+    検索
+  </button>
+</div>
+
+
   <div className={styles.grid}>
-    {menu.map((item) => (
+    {/* {menu.map((item) => ( */}
+    {filteredMenu.map((item) => (
       <div key={item.id} className={styles.card}>
         {item.image && (
           <Image
@@ -161,35 +158,7 @@ const getTotalPrice = () => {
 </main>
 
       {/* 注文状況 */}
-      {/* <aside className={styles.cart}>
-        <h2 className={styles.cartTitle}>注文状況</h2>
-        {cart.length === 0 ? (
-          <p className={styles.empty}>まだ注文はありません。</p>
-        ) : (
-          cart.map((item, i) => (
-            <div key={`${item.id}-${i}`} className={styles.cartItem}>
-              {item.image && (
-                <Image
-                  src={item.image.url}
-                  alt={item.name}
-                  width={60}
-                  height={40}
-                  className={styles.cartImage}
-                />
-              )}
-              <p className={styles.cartName}>
-                {item.name} — {item.price}円
-              </p>
-              <button
-      className={styles.deleteButton} // 👈 スタイルは後述
-      onClick={() => removeFromCart(i)} // 👈 i番目のアイテムを削除
-    >
-      削除
-    </button>
-            </div>
-          ))
-        )}
-      </aside> */}
+     
       <aside className={styles.cart}>
   <h2 className={styles.cartTitle}>注文状況</h2>
   {cart.length === 0 ? (

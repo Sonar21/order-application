@@ -25,6 +25,40 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 1rem 0;
+}
+
+.searchBox {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ffc0cb;
+  border-radius: 9999px;
+  outline: none;
+}
+
+.searchButton {
+  background: linear-gradient(to right, #f472b6, #ec4899);
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+.searchButton:hover {
+  background: linear-gradient(to right, #ec4899, #f472b6);
+  transform: scale(1.05);
+}
 
 .card {
   background-color: #ffe4ec;

@@ -126,9 +126,7 @@
   background: #db2777;
 }
 .backIcon {
-  /* position: absolute;
-  top:2rem;
-  left: 20rem; */
+  
   display: flex;
   align-items: center;
   gap: 0.5rem;
