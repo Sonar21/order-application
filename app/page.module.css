@@ -179,6 +179,8 @@
   border-radius: 9999px;
   cursor: pointer;
   font-weight: 600;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;  
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -193,4 +195,37 @@
   font-size: 1.3rem;
   color: #dc2626;
   text-align: center;
+}
+
+.cartTotal {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background-color: #fff0f5;
+  border: 1px solid #f9a8d4;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #be123c;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(249, 168, 212, 0.25);
+}
+
+.checkoutButton {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(to right, #f472b6, #ec4899);
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+}
+
+.checkoutButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
 }

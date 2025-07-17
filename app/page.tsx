@@ -4,33 +4,23 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import StarRating from "@/app/components/StarRating";
+
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
-import { FaSearch } from "react-icons/fa";
+import { MenuItem } from "@/app/data/menu" 
+import { MdDeleteForever } from "react-icons/md";
 const MENU_API_URL = "https://5o7lwwt7q4.microcms.io/api/v1/menus"; // microCMS のエンドポイント URL
 
-// データをセットする配列を用意
-type MenuItem = {
-  id: string;
-  name: string;
-  price: number;
-  comment?: string;
-  image?: {
-    url: string;
-    width: number;
-    height: number;
-  };
-  review?: number;
-  quantity?: number;
-};
+
 
 export default function MenuPage() {
-  // menu,cart 表示データを入れる配列、
-  // setMenu,setCart は、menu,cart を更新する関数function
+  
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const [cart, setCart] = useState<MenuItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchQuery, setSearchQuery] = useState(""); // 検索確定キーワード
+
+const [confirmed, setConfirmed] = useState(false);
 
   const handleSearch = () => {
     setSearchQuery(searchTerm);
@@ -86,18 +76,24 @@ export default function MenuPage() {
     localStorage.setItem("cart", JSON.stringify(updated));
   };
 
-  // const getTotalPrice = () => {
-  //   return cart.reduce((total, item) => total + item.price, 0);
-  // };
-  //  const getTotalPrice = () => {
-  //   return cart.reduce((total, item) => total + (item.price || 0), 0);
-  // };
 const getTotalPrice = () => {
   return cart.reduce((total, item) => {
     const quantity = item.quantity || 1; // quantity がない場合は 1 とする
     return total + item.price * quantity;
   }, 0);
 };
+
+// 2. return 文のすぐ下あたりに if 文を追加（confirmed が true ならサンクス画面）
+if (confirmed) {
+  return (
+    <div className={styles.thankyou}>
+      {/* <h1>ありがとうございました</h1> */}
+      <Image src="/images/thanku.webp" alt="寿司のイメージ画像" width={400} height={400} />
+      <h3>またのご来店をお待ちしております。</h3>
+      <button onClick={() => router.push("/")}>トップに戻る</button>
+    </div>
+  );
+}
 
   return (
     <div className={styles.container}>
@@ -195,15 +191,35 @@ const getTotalPrice = () => {
                   className={styles.deleteButton}
                   onClick={() => removeFromCart(i)}
                 >
-                  削除
+                  <MdDeleteForever />
                 </button>
               </div>
             ))}
+            
             {/* 👇 合計金額 */}
-            <p className={styles.totalPrice}>合計金額：{getTotalPrice()}円</p>
+            {/* <p className={styles.totalPrice}>合計金額：{getTotalPrice()}円</p> */}
+            {/* <p className={styles.totalPrice}>合計金額：{getTotalPrice()}円</p>
+
+<button
+  className={styles.confirmButton}
+  onClick={() => setConfirmed(true)}
+>
+  注文を確定する
+</button> */}
+ <div className={styles.cartTotal}>
+          合計金額：{getTotalPrice()}円(税込)
+        </div>
+        {/* 会計へボタン */}
+        <button className={styles.checkoutButton}
+          onClick={() => router.push("/checkout")}>
+          会計する
+        </button>
           </>
         )}
       </aside>
+
+      
     </div>
   );
 }
+
