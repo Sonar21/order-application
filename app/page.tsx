@@ -7,8 +7,10 @@ import StarRating from "@/app/components/StarRating";
 
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
-import { MenuItem } from "@/app/data/menu" 
-import { MdDeleteForever } from "react-icons/md";
+import { MenuItem } from "@/app/data/menu" ;
+import Aside from "@/app/components/Aside";
+
+
 const MENU_API_URL = "https://5o7lwwt7q4.microcms.io/api/v1/menus"; // microCMS のエンドポイント URL
 
 
@@ -166,7 +168,7 @@ if (confirmed) {
       </main>
 
       {/* 注文状況 */}
-
+{/* 
       <aside className={styles.cart}>
         <h2 className={styles.cartTitle}>注文状況</h2>
         {cart.length === 0 ? (
@@ -206,18 +208,22 @@ if (confirmed) {
 >
   注文を確定する
 </button> */}
- <div className={styles.cartTotal}>
+ {/* <div className={styles.cartTotal}>
           合計金額：{getTotalPrice()}円(税込)
         </div>
         {/* 会計へボタン */}
-        <button className={styles.checkoutButton}
+        {/* <button className={styles.checkoutButton}
           onClick={() => router.push("/checkout")}>
           会計する
         </button>
           </>
         )}
-      </aside>
-
+      </aside> */} 
+<Aside
+  cart={cart}
+  removeFromCart={removeFromCart}
+  getTotalPrice={getTotalPrice}
+/>
       
     </div>
   );
