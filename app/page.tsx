@@ -100,8 +100,9 @@ export default function MenuPage() {
   return (
     <div className={styles.container}>
       {/* メニュー一覧 */}
+      
       <main className={styles.menuList}>
-        <h1 className={styles.title}>メニュー一覧</h1>
+        <h1 className={styles.title}>Luxe Sakura</h1>
 
         <div className={styles.searchContainer}>
           <input

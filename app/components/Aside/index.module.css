@@ -104,3 +104,35 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
 }
+
+/* PC／タブレット用 */
+.container {
+  display: flex;
+  flex-direction: row;
+}
+.container > main { order: 1; flex: 1; }
+.container > aside { order: 2; }
+
+/* スマホ向け設定 */
+@media only screen and (max-width: 600px) {
+  .container { flex-direction: column; }
+  .container > aside {
+    order: -1;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .container > main { order: 1; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .card { padding: 0.75rem; }
+  .searchContainer { margin: 0.75rem 0; }
+  .addButton, .searchButton {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+}

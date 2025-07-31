@@ -4,7 +4,8 @@
   padding: 2rem;
   background-color: #fff0f5;
   font-family: var(--font-sans);
-}
+} 
+
 
 .menuList {
   max-width: 800px;
@@ -123,109 +124,41 @@
   transform: scale(1.05);
 }
 
-.cart {
-  background-color: #fff0f5;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  /* box-shadow: 0 6px 15px rgba(255, 192, 203, 0.3); */
-  max-width: 350px;
-  font-family: var(--font-sans);
-}
 
-.cartTitle {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #d63384;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.empty {
-  font-style: italic;
-  color: #a23966;
-  text-align: center;
-}
-
-.cartItem {
+.container {
   display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ffc0cb;
-  /* border-radius: 0.75rem; */
-  padding: 0.5rem;
-  background-color: linear-gradient(to right, #f472b6, #ec4899);
-  /* box-shadow: 0 2px 6px rgba(255, 192, 203, 0.3); */
+  flex-direction: row;
 }
 
-.cartImage {
-  border-radius: 0.5rem;
-  margin-right: 0.8rem;
-  object-fit: cover;
-  /* border: 2px solid #fbcfe8; */
+.container > main {
+  order: 1;
+  flex: 1;
 }
 
-.cartName {
-  flex-grow: 1;
-  font-weight: 600;
-  color: #d63384;
-  font-size: 1rem;
+.container > aside {
+  order: 2;
 }
 
-.deleteButton {
-  background: linear-gradient(to right, #f472b6, #ec4899);
-  border: none;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 9999px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;  
-  transition: background 0.3s ease, transform 0.3s ease;
-}
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+  .container > aside {
+    order: 1;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .container > main { order: 1; }
 
-.deleteButton:hover {
-  background: linear-gradient(to right, #ec4899, #f472b6);
-  transform: scale(1.05);
-}
-
-.totalPrice {
-  margin-top: 1rem;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #dc2626;
-  text-align: center;
-}
-
-.cartTotal {
-  margin-top: 2rem;
-  padding: 1.25rem 1.5rem;
-  background-color: #fff0f5;
-  border: 1px solid #f9a8d4;
-  border-radius: 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #be123c;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(249, 168, 212, 0.25);
-}
-
-.checkoutButton {
-  margin-top: 1.5rem;
-  width: 100%;
-  padding: 0.9rem 1.5rem;
-  background: linear-gradient(to right, #f472b6, #ec4899);
-  color: white;
-  font-size: 1.05rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 0.75rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
-}
-
-.checkoutButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .card { padding: 0.75rem; }
+  .searchContainer { margin: 0.75rem 0; }
+  .addButton, .searchButton {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
 }
