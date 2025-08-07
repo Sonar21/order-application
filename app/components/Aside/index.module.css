@@ -85,8 +85,9 @@
   box-shadow: 0 6px 20px rgba(249, 168, 212, 0.25);
 }
 
-.checkoutButton {
-  margin-top: 1.5rem;
+
+.clearCartButton {
+  margin-top: 1rem;
   width: 100%;
   padding: 0.9rem 1.5rem;
   background: linear-gradient(to right, #f472b6, #ec4899);
@@ -100,10 +101,14 @@
   box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
 }
 
-.checkoutButton:hover {
+.clearCartButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
 }
+
+
+
+
 
 /* PC／タブレット用 */
 .container {
@@ -135,4 +140,11 @@
     padding: 0.6rem;
     font-size: 1rem;
   }
+ 
+  .deleteButton {
+    padding: 0.3rem 0.6rem;
+    font-size: 1.2rem;
+  }
+
+
 }
