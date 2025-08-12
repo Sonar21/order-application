@@ -150,13 +150,13 @@ export default function MenuPage() {
               <p className={styles.name}>{item.name}</p>
               <p className={styles.price}>{item.price}円</p>
               {item.comment && <p className={styles.comment}>{item.comment}</p>}
-              <div className={styles.stars}>
+              {/* <div className={styles.stars}>
                 {item.review && (
                   <div className={styles.stars}>
                     <StarRating rating={parseFloat(item.review)} />
                   </div>
                 )}
-              </div>
+              </div> */}
               <button
                 className={styles.addButton}
                 onClick={() => router.push(`/confirm/${item.id}`)}
