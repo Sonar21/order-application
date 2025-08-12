@@ -24,17 +24,18 @@ export default function CartAside({
   const groupedCart = cart.reduce((acc, item, index) => {
     const existing = acc.find((group) => group.id === item.id);
     if (existing) {
-      existing.quantity += Number(item.quantity) || 1;
+      // Ensure quantity is a number and handle potential undefined cases
+      existing.quantity += Number(item.quantity ?? 1);
       existing.indices.push(index);
     } else {
       acc.push({
         ...item,
-        quantity: Number(item.quantity) || 1,
+        quantity: Number(item.quantity ?? 1), // Default to 1 if undefined
         indices: [index],
       });
     }
     return acc;
-  }, [] as (MenuItem & { indices: number[] })[]);
+  }, [] as (MenuItem & { quantity: number; indices: number[] })[]); // Explicitly define quantity as number
 
   const handleConfirmOrder = () => {
     router.push("/checkout");
@@ -80,22 +81,20 @@ export default function CartAside({
               </button>
             </div>
           ))}
-         
-          
           <div className={styles.cartTotal}>
             合計金額：{getTotalPrice()}円(税込)
           </div>
-<div className="{styles.buttonContainer}">
-  <button
-            className={styles.clearCartButton}
-            onClick={handleConfirmOrder}
-          >
-            注文を確定する
-          </button>
-          {/* <button className={styles.checkoutButton} onClick={clearCart}>
-            カートを全て削除
-          </button> */}
-</div>
+          <div className={styles.buttonContainer}>
+            <button
+              className={styles.clearCartButton}
+              onClick={handleConfirmOrder}
+            >
+              注文を確定する
+            </button>
+            {/* <button className={styles.checkoutButton} onClick={clearCart}>
+              カートを全て削除
+            </button> */}
+          </div>
         </>
       )}
     </aside>
