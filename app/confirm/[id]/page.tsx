@@ -15,7 +15,7 @@ type MenuItem = {
   price: number;
   comment?: string;
   image?: { url: string; width: number; height: number };
-  review?: number;
+  // review?: number;
 };
 
 export default function ConfirmPage({ params }: { params: { id: string } }) {
@@ -68,11 +68,7 @@ export default function ConfirmPage({ params }: { params: { id: string } }) {
       <p className={styles.price}>{item.price}円</p>
       {item.comment && <p className={styles.comment}>{item.comment}</p>}
 
-      {item.review !== undefined && (
-        <div className={styles.stars}>
-          <StarRating rating={item.review} /> {/* Pass number directly */}
-        </div>
-      )}
+      
       <div className={styles.counter}>
         <button
           className={styles.button}
